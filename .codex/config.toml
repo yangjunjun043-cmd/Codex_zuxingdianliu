@@ -1,0 +1,8 @@
+
+[mcp_servers.matlab]
+command = "C:/Users/18423/.matlab/agentic-toolkits/bin/matlab-mcp-server.exe"
+args = ["--matlab-session-mode=existing", "--extension-file=C:/Users/18423/.matlab/agentic-toolkits/simulink/tools/tools.json"]
+tool_timeout_sec = 600
+
+[mcp_servers.matlab.tools.evaluate_matlab_code]
+approval_mode = "approve"
