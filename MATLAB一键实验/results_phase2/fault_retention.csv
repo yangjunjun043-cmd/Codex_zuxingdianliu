@@ -1,0 +1,2 @@
+nominal_fault_factor,true_fault_factor,fixed_estimated_factor,cvff_rls_estimated_factor,cvff_rls_retention_error_pct,gated_cycles_after_fault
+1.6,1.59999999999967,1.55107375232268,1.58287648629316,-1.07021960665711,48
