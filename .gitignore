@@ -1,0 +1,28 @@
+# =========================
+# MATLAB / Simulink 缓存
+# =========================
+.matlab_prefs/
+slprj/
+codegen/
+*.slxc
+*.asv
+*.autosave
+*.m~
+*.mex*
+
+# MATLAB 日志
+matlab_startup.log
+*.log
+
+# Python 缓存
+__pycache__/
+*.pyc
+
+# 系统临时文件
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# 临时文件
+*.tmp
+*.temp
