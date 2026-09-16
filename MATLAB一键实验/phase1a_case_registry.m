@@ -1,6 +1,6 @@
 function registry = phase1a_case_registry()
 %PHASE1A_CASE_REGISTRY Phase 1A 六个正式工况的冻结映射。
-% Step 1 只登记名称、历史来源和运行需求，不定义或迁移工况轨迹。
+% Step 2 冻结正式名称、legacy 映射、seed 与信号来源。
 
 caseName = [
     "Case01_static"
@@ -18,15 +18,15 @@ legacyScenarioName = [
     "fault_only"
     "fault_with_drift"
     ];
-seed = [101; 102; 103; 104; NaN; 105];
+seed = [101; 102; 103; 104; 106; 105];
 durationS = repmat(4.0,6,1);
 model = repmat("AI6109_MOA_AutoComp9.slx",6,1);
 sourceType = [
     "autocomp9_partial"
     "autocomp9_partial"
-    "legacy_matlab_synthetic_only"
-    "legacy_matlab_synthetic_only"
-    "none"
+    "legacy_trajectory_migrated_to_autocomp9"
+    "legacy_trajectory_migrated_to_autocomp9"
+    "phase1a_new_signal_definition"
     "autocomp9_fragmented"
     ];
 historicalResultAvailable = [true; true; true; true; false; true];
@@ -34,9 +34,9 @@ requiresPhase1aRun = true(6,1);
 notes = [
     "AutoComp9 仅有静态链路一致性；缺统一 M0/M2/M3 结果。"
     "AutoComp9 已有 M0/M3 历史指标；缺 M2 和统一结果结构。"
-    "仅有旧 MATLAB 合成链结果；轨迹迁移留到 Step 2。"
-    "仅有旧 MATLAB 合成链结果；轨迹迁移留到 Step 2。"
-    "无历史定义或结果；seed 与轨迹均留到 Step 2 确认。"
+    "旧 smooth_step 轨迹已原样迁移；历史结果仍来自 MATLAB 合成链。"
+    "旧 random_drift 轨迹已原样迁移；历史结果仍来自 MATLAB 合成链。"
+    "Phase 1A new deterministic seed; no historical Case05 result exists."
     "现有 fault_with_drift 与目标语义一致；证据分散且需统一输出。"
     ];
 
