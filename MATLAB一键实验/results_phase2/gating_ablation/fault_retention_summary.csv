@@ -1,0 +1,2 @@
+true_fault_factor,no_gate_estimated_factor,no_gate_retention_error_pct,gated_estimated_factor,gated_retention_error_pct,gated_cycles_after_fault
+1.59999999999967,1.40226869710244,-12.3582064310797,1.58287648629316,-1.07021960665711,48
