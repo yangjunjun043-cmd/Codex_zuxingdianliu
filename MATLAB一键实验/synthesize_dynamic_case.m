@@ -15,6 +15,7 @@ Cs2 = 10*ones(size(t));
 
 switch scenario
     case 'static'
+    case 'fault_only'
     case 'slow_drift'
         s = smooth_step(t, 1.0, 3.0);
         Cs1 = 10 + 4*s; Cs2 = 10 - 3*s;
@@ -38,6 +39,9 @@ irA = base.irA; irB = base.irB; irC = base.irC;
 if strcmp(scenario, 'fault_with_drift')
     sf = smooth_step(t, 3.0, 3.06);
     irB = irB .* (1 + 0.6*sf);  % B相阻性电流提高60%
+elseif strcmp(scenario, 'fault_only')
+    sf = smooth_step(t, 3.0, 3.06);
+    irB = irB .* (1 + 0.6*sf);  % 与fault_with_drift使用相同故障曲线
 end
 
 ia = Ca*1e-12.*dua + Cs1*1e-12.*(dua-dub) + irA;
