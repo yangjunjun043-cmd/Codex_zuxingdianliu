@@ -1,0 +1,6 @@
+link_id,upstream_variable,downstream_variable,evidence_level,quantitative_evidence,limitation
+E1,"r_fault","projection onto col(X)",directly verified,"Step 2/3 projection closure <= 5.50e-15; Step 4 eta_post 0.275451415 to 0.276054996.","Geometry is conditional on the frozen two-column X/reference model."
+E2,"projection onto col(X)","Delta c_LS,f",directly verified,"X*Delta c_LS,f reproduces the projected component by construction and passed the Step 2/3 projection-fit checks.","Static LS describes blockwise equivalent bias, not recursive timing."
+E3,"Delta c_LS,f","recursive false Cs bias",strongly supported,"Amplitude-sweep maximum RMSE 0.00133897 pF, maximum relative error 0.662831%, direction agreement 100%.","Only six deterministic points per sweep; recursion and state history remain separate."
+E4,"recursive false Cs bias","false coupling compensation",directly verified,"Compensation RMS rises 0.0139816 to 0.16885 mA while its amplitude ratio stays 0.331184 to 0.333295.","Mapping is evaluated for the frozen B-phase extraction equation."
+E5,"false coupling compensation","fault increment loss",directly verified,"Case05/Case06 counterfactual recovery residuals are 0.00105115 and 0.00264743 in fault factor; controlled lost increment 0.0155067 to 0.198925.","Counterfactual recovery is deterministic and is not a population robustness claim."

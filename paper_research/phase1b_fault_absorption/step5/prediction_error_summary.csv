@@ -1,0 +1,5 @@
+sweep,parameter,n,RMSE_pF,MAE_pF,max_absolute_error_pF,max_relative_error_pct,pearson_r,spearman_rho,direction_agreement_pct,prediction_definition,actual_definition,evidence_scope
+amplitude,Cs1,6,0.00125645001648833,0.000974669822606152,0.00268138894685599,0.662831365861043,0.999999936043816,1,100,"static Delta c_LS,f",recursive fault-branch minus counterfactual-branch bias,controlled exploratory evidence
+amplitude,Cs2,6,0.00133897474396966,0.00118106797897823,0.00257131452538295,0.635448390588489,0.99999993659252,1,100,"static Delta c_LS,f",recursive fault-branch minus counterfactual-branch bias,controlled exploratory evidence
+phase_error,Cs1,6,0.000180115127886932,0.000174075358546707,0.000224696034289984,0.00459841567252727,0.999999999959426,1,100,"static Delta c_LS,f",recursive fault-branch minus counterfactual-branch bias,controlled exploratory evidence
+phase_error,Cs2,6,0.000965665017313344,0.000963271122526403,0.00108609140420945,0.0211112931050164,0.999999999742188,1,100,"static Delta c_LS,f",recursive fault-branch minus counterfactual-branch bias,controlled exploratory evidence

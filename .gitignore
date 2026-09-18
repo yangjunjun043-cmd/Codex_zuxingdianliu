@@ -26,3 +26,5 @@ desktop.ini
 # 临时文件
 *.tmp
 *.temp
+# MATLAB generated workspace files
+*_workspace.mat
