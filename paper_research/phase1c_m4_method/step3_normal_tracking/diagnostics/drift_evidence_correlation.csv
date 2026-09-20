@@ -1,0 +1,7 @@
+case_name,target_metric,valid_cycle_pairs,pearson_r,spearman_rho
+Case02_slow_drift,normal_suppression,164,-0.0249609701845858,-0.00157843675435039
+Case02_slow_drift,fault_evidence_score,164,-0.0259056310487702,-0.00157843675435039
+Case03_smooth_step,normal_suppression,164,-0.114883831756363,-0.134133583254515
+Case03_smooth_step,fault_evidence_score,164,-0.114117632660965,-0.134133583254515
+Case04_random_drift,normal_suppression,164,0.0024189947539657,0.00376456061620957
+Case04_random_drift,fault_evidence_score,164,0.00426337520276885,0.00376456061620957

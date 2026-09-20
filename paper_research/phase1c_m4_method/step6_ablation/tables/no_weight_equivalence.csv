@@ -1,0 +1,8 @@
+condition,max_parameter_difference_pF,max_B_current_difference_A,pass
+Case02,0,0,1
+Case05_F,0,0,1
+Case05_CF,0,0,1
+Case07_F,0,0,1
+Case07_CF,0,0,1
+Case08_F,0,0,1
+Case08_CF,0,0,1

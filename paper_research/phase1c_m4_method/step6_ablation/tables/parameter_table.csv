@@ -1,0 +1,12 @@
+parameter,value,origin,tuned_in_phase1c
+gate_ratio,1.12,inherited cfg,0
+gate_quad_ratio,1.2,inherited cfg,0
+lambda_min,0.55,inherited cfg,0
+lambda_max,0.995,inherited cfg,0
+innovation_scale,0.2,frozen M2/M4 source,0
+baseIn_alpha,0.015,frozen M4 source,0
+baseIn_condition,1.08,frozen M4 source,0
+regularization,1e-10,frozen M4 source,0
+rate_limit_pF_per_cycle,1.2,inherited cfg,0
+projection_lower_pF,0,inherited cfg,0
+projection_upper_pF,40,inherited cfg,0

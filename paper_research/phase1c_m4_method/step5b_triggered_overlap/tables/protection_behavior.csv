@@ -1,0 +1,4 @@
+algorithm_mode,pre_behavior,overlap_behavior,release_recovery_definition,protection_onset_s,hard_gate_active_ratio_overlap,mean_update_weight_overlap,mean_update_suppression_overlap,release_or_recovery_time_s,release_or_recovery_latency_s
+M2,full adaptation,full adaptation,not applicable,NaN,NaN,1,0,NaN,NaN
+M3,gate inactive before fault,hard freeze when gate active,persistent gate-off after clear,1.55998,1,0,1,2.41998,0.45998
+M4,continuous weighted update,nonzero evidence-weighted adaptation,two cycles inside robust W0 suppression band,1.51998,NaN,0.360040960237705,0.639959039762295,1.99998,0.0399800000000001

@@ -1,0 +1,10 @@
+evidence,M2,M3,M4_REW_AI
+normal_drift_tracking,"best anchor tracking; no protection cost","identical to M2 because gate stays off","preserved with small suppression cost"
+pure_fault_preservation,"fault is strongly absorbed","strong preservation after binary freeze","slight improvement over M2; much weaker than M3"
+weak_fault_overlap,"full fault absorption path","threshold not triggered; identical to M2","continuous sub-threshold suppression and improved retention"
+strong_triggered_overlap,"continues full adaptation","fully freezes and loses true drift during gate","nonzero adaptation with intermediate retention"
+response_continuity,"g=1","binary 0/1","continuous 0<g<=1"
+threshold_dependence,"not applicable","high; factor 1.30 missed and 1.60 triggered","uses continuous evidence below hard threshold"
+adaptation_during_fault,"full","zero while gate active","nonzero but fault-contaminated"
+post_fault_recovery,"moderate memory","long hold memory","lower memory than M2/M3 in Case08"
+main_limitation,"absorbs resistive fault into Cs","misses sub-threshold faults and freezes real drift","slows but does not eliminate fault-biased learning"

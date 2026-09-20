@@ -1,0 +1,7 @@
+case_name,algorithm_mode,Cs1_midpoint_crossing_lag_s,Cs2_midpoint_crossing_lag_s,Cs1_true_midpoint_crossing_s,Cs2_true_midpoint_crossing_s,Cs1_est_midpoint_crossing_s,Cs2_est_midpoint_crossing_s
+Case02_slow_drift,M2,0.12,0.04,2,2,2.12,2.04
+Case02_slow_drift,M3,0.12,0.04,2,2,2.12,2.04
+Case02_slow_drift,M4,0.12,0.0600000000000001,2,2,2.12,2.06
+Case03_smooth_step,M2,0.03,0.03,1.55,1.55,1.58,1.58
+Case03_smooth_step,M3,0.03,0.03,1.55,1.55,1.58,1.58
+Case03_smooth_step,M4,0.03,0.03,1.55,1.55,1.58,1.58

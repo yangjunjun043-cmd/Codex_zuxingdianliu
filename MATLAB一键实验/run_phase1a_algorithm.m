@@ -20,6 +20,10 @@ switch mode
     case "M3"
         tracker = track_coupling_cvff_rls(data,ref,cfg,self_pF,true);
         cHist = tracker.hist;
+    case "M4"
+        tracker = track_coupling_m4_weighted_rls( ...
+            data,ref,cfg,self_pF);
+        cHist = tracker.hist;
 end
 
 ir = extract_resistive_current(data,ref,self_pF,cHist);

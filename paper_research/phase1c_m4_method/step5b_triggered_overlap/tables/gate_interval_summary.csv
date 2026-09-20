@@ -1,0 +1,2 @@
+gate_onset_s,gate_onset_latency_s,gate_end_s,gate_duration_s,gate_release_s,gate_release_latency_s,gate_active_ratio_W1,gate_active_ratio_W2,gate_active_ratio_overlap,true_delta_Cs1_pF,true_delta_Cs2_pF,m4_mean_g_same_interval,m4_median_g_same_interval,m4_min_g_same_interval
+1.55998,0.0599800000000001,2.39998,0.84,2.41998,0.45998,1,1,1,1.30767897391835,-0.871785982612233,0.697575782252474,0.949833842129386,0.340722579932373

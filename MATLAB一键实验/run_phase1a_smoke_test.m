@@ -80,7 +80,9 @@ if Cs1SignalDifference > 1e-10 || Cs2SignalDifference > 1e-10
 end
 ref = reconstruct_refs_from_b(data.t,data.ub,cfg.f, ...
     cfg.init_start,cfg.init_end,cfg.phase_error_deg);
-modes = phase1a_algorithm_registry().algorithm_mode;
+registry = phase1a_algorithm_registry();
+modes = registry.algorithm_mode( ...
+    registry.enabled & registry.include_in_frozen_baseline);
 algorithmResults = struct();
 metrics = phase1a_result_schema().empty_result_table;
 for k = 1:numel(modes)

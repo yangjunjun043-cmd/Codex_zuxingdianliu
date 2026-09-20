@@ -4,7 +4,7 @@ classdef Phase1AAlgorithmDispatcherTest < matlab.unittest.TestCase
     properties (TestParameter)
         illegalMode = struct( ...
             'reservedLowerMode',"M1", ...
-            'reservedHigherMode',"M4", ...
+            'reservedHigherMode',"M5", ...
             'unknownMode',"UNKNOWN", ...
             'emptyMode',"")
     end
@@ -18,12 +18,19 @@ classdef Phase1AAlgorithmDispatcherTest < matlab.unittest.TestCase
     end
 
     methods (Test)
-        function testRegistryContainsOnlyEnabledBaselineModes(testCase)
+        function testRegistryContainsFrozenModesAndM4Extension(testCase)
             registry = phase1a_algorithm_registry();
 
-            testCase.verifyEqual(registry.algorithm_mode,["M0";"M2";"M3"]);
+            testCase.verifyEqual( ...
+                registry.algorithm_mode,["M0";"M2";"M3";"M4"]);
             testCase.verifyTrue(all(registry.enabled));
-            testCase.verifyEqual(height(registry),3);
+            testCase.verifyEqual(registry.algorithm_mode( ...
+                registry.include_in_frozen_baseline),["M0";"M2";"M3"]);
+            testCase.verifyTrue( ...
+                registry.continuous_update_weight(4));
+            testCase.verifyTrue(registry.direction_diagnostics(4));
+            testCase.verifyFalse(registry.hard_fault_gate(4));
+            testCase.verifyEqual(height(registry),4);
         end
 
         function testM0UsesInitialEstimateAndFrozenHistory(testCase)
@@ -65,6 +72,21 @@ classdef Phase1AAlgorithmDispatcherTest < matlab.unittest.TestCase
             Phase1AAlgorithmDispatcherTest.verifyResultShape(testCase,result,data);
         end
 
+        function testM4ReturnsIndependentTrackerAndCurrent(testCase)
+            [data,ref,cfg,self_pF] = ...
+                Phase1AAlgorithmDispatcherTest.fixtureData();
+
+            result = run_phase1a_algorithm("M4",data,ref,cfg,self_pF);
+
+            testCase.verifyEqual(result.algorithm_mode,"M4");
+            testCase.verifyEqual(result.cHist,result.tracker.hist,'AbsTol',0);
+            testCase.verifyTrue(istable(result.tracker.cycle));
+            testCase.verifyTrue(ismember( ...
+                'update_weight', ...
+                result.tracker.cycle.Properties.VariableNames));
+            Phase1AAlgorithmDispatcherTest.verifyResultShape(testCase,result,data);
+        end
+
         function testDispatcherIsThinAndUsesExactMappings(testCase)
             source = fileread(which('run_phase1a_algorithm'));
 
@@ -77,6 +99,8 @@ classdef Phase1AAlgorithmDispatcherTest < matlab.unittest.TestCase
             testCase.verifyNotEmpty(regexp(source, ...
                 'track_coupling_cvff_rls\(data,ref,cfg,self_pF,true\)', ...
                 'once'));
+            testCase.verifyNotEmpty(regexp(source, ...
+                'track_coupling_m4_weighted_rls', 'once'));
             testCase.verifyEqual(numel(regexp(source, ...
                 'extract_resistive_current\(data,ref,self_pF,cHist\)', ...
                 'match')),1);

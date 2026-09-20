@@ -1,10 +1,13 @@
-function baseline = run_phase1a_baseline()
+function baseline = run_phase1a_baseline(outputRoot)
 %RUN_PHASE1A_BASELINE Run the frozen six-case Phase 1A baseline.
 % This function only orchestrates existing case, algorithm, and metric code.
 
 matlabRoot = fileparts(mfilename('fullpath'));
 projectRoot = fileparts(matlabRoot);
-outputRoot = fullfile(projectRoot,'paper_research','phase1a_baseline');
+if nargin < 1 || isempty(outputRoot)
+    outputRoot = fullfile( ...
+        projectRoot,'paper_research','phase1a_baseline');
+end
 frozenMetadata = phase1a_baseline_metadata();
 modelPath = fullfile(matlabRoot,'AI6109_MOA_AutoComp9.slx');
 modelSha256 = file_sha256(modelPath);
@@ -18,7 +21,9 @@ cfg.model = char(frozenMetadata.baseline_model);
 cfg.output_dir = outputRoot;
 caseRegistry = phase1a_case_registry();
 algorithmRegistry = phase1a_algorithm_registry();
-algorithmRegistry = algorithmRegistry(algorithmRegistry.enabled,:);
+algorithmRegistry = algorithmRegistry( ...
+    algorithmRegistry.enabled & ...
+    algorithmRegistry.include_in_frozen_baseline,:);
 resultSchema = phase1a_result_schema();
 historicalReference = phase1a_historical_reference();
 runMetadata = current_run_metadata(modelPath,modelSha256,projectRoot, ...
