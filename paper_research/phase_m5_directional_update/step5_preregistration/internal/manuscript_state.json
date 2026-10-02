@@ -1,0 +1,163 @@
+{
+  "schema_version": "1.1",
+  "project": {
+    "id": "M5_STEP5A",
+    "title": "M5 Step5A Robustness Monte-Carlo Preregistration",
+    "archetype": "empirical",
+    "study_designs": [
+      "paired computational Monte-Carlo robustness preregistration"
+    ],
+    "lifecycle_stage": "draft",
+    "review_maturity": "internal",
+    "target_venue": "",
+    "active_release": "working"
+  },
+  "artifacts": [
+    {
+      "id": "main",
+      "path": "../M5_STEP5_PREREGISTRATION.md",
+      "role": "preregistration_report",
+      "status": "ACTIVE",
+      "required_for_release": true
+    }
+  ],
+  "authority_sources": [
+    {
+      "id": "phase2-o-registry",
+      "kind": "frozen_design_registry",
+      "path_or_reference": "../../../phase2_full_validation/step1_matrix_spec/phase2_condition_registry.csv",
+      "scope": [
+        "methods",
+        "design counts",
+        "nuisance values"
+      ],
+      "status": "VERIFIED",
+      "last_verified": "2026-09-30"
+    }
+  ],
+  "contract": {
+    "gap": "Step4 direction-selective findings require a frozen nuisance-robustness test without inspecting M5 robustness performance.",
+    "task": "Freeze the Step5 matched robustness registry, endpoints, summaries, boundaries, workload, and GO/STOP rules; do not execute simulation.",
+    "outcomes": [
+      "M5_STEP5_PREREGISTRATION.md",
+      "M5_STEP5_ROBUSTNESS_MATRIX.csv"
+    ],
+    "questions": [
+      {
+        "id": "Q1",
+        "text": "Does the direction-selective mechanism remain stable across the frozen Phase2 O-cohort nuisance registry and three preregistered drift geometries?",
+        "lock": "SEMANTIC"
+      }
+    ],
+    "contribution": "A paired 50-by-3 geometry robustness design with four matched algorithms and no overall score.",
+    "nonclaims": [
+      "No M5 robustness simulation was run.",
+      "No M5 robustness performance was viewed.",
+      "Parallel geometry is a validity boundary, not a superiority target.",
+      "No p-value is a GO condition."
+    ]
+  },
+  "semantic_locks": [
+    {
+      "id": "LOCK_REGISTRY",
+      "kind": "SEMANTIC",
+      "canonical": "Use the exact frozen Phase2 O-cohort rows 1:50."
+    },
+    {
+      "id": "LOCK_GEOMETRY",
+      "kind": "SEMANTIC",
+      "canonical": "Use ORTHOGONAL, MIXED, and PARALLEL drift norm sqrt(13) pF."
+    },
+    {
+      "id": "LOCK_ALGORITHMS",
+      "kind": "SEMANTIC",
+      "canonical": "Run only GH, GC, M5_DH, and M5_FULL in Step5."
+    },
+    {
+      "id": "LOCK_DIRECTION",
+      "kind": "SEMANTIC",
+      "canonical": "Do not rotate d_f online."
+    },
+    {
+      "id": "LOCK_NO_TUNING",
+      "kind": "SEMANTIC",
+      "canonical": "Do not tune algorithms in response to robustness outcomes."
+    }
+  ],
+  "terminology": [
+    {
+      "id": "TERM_PHYSICAL_CONDITION",
+      "preferred": "physical condition"
+    },
+    {
+      "id": "TERM_ALGORITHM_EVALUATION",
+      "preferred": "algorithm evaluation"
+    },
+    {
+      "id": "TERM_DELTA_CONT",
+      "preferred": "Delta_perp_cont"
+    },
+    {
+      "id": "TERM_DELTA_HARD",
+      "preferred": "Delta_perp_hard"
+    },
+    {
+      "id": "TERM_VALIDITY_BOUNDARY",
+      "preferred": "identifiability boundary"
+    }
+  ],
+  "style_profile": {
+    "language_variant": "zh-CN with preserved mathematical identifiers",
+    "protected_terms": [],
+    "discouraged_phrases": [],
+    "preferred_open_compounds": [],
+    "allowed_repetitions": [
+      "Step5 robustness matrix",
+      "GH GC M5_DH M5_FULL"
+    ],
+    "sentence_opening_words": 4,
+    "phrase_words": 5,
+    "phrase_min_occurrences": 3
+  },
+  "facts": [],
+  "alignment": [
+    {
+      "question_id": "Q1",
+        "method": "Replicate each of 50 frozen O-cohort nuisance rows across three fixed-norm geometries and evaluate four matched algorithms.",
+        "evidence": "Planned paired raw values and preregistered aggregate summaries.",
+        "result": "NOT_RUN",
+        "interpretation": "Pending Step5 execution after human review.",
+        "limitation": "Designed registry; no population-sampling p-value interpretation.",
+        "contribution": "Direction-specific robustness test with explicit projection/rate boundaries.",
+      "status": "PLANNED"
+    }
+  ],
+  "dimensions": [],
+  "decisions": [],
+  "issues": [],
+  "release": {
+    "status": "REVIEW_READY_PREREGISTRATION",
+    "candidate_artifact_ids": [
+      "main"
+    ],
+    "required_checks": [
+      "argument_structure",
+      "evidence_scope",
+      "scholarly_writing",
+      "delivery_integrity",
+      "functional_completeness"
+    ],
+    "completed_checks": [
+      "argument_structure",
+      "evidence_scope",
+      "scholarly_writing",
+      "delivery_integrity",
+      "functional_completeness"
+    ],
+    "checked_hashes": {
+      "M5_STEP5_PREREGISTRATION.md": "CFA6DE0696344108F3B767D5AAC6C2AFD444BAB0142219474A26D6F2E39DAAC2",
+      "M5_STEP5_ROBUSTNESS_MATRIX.csv": "3BC7206A20A01BF677522D56BAE9D7A497226162E386495763435733D38D5E66"
+    },
+    "visual_check": "PASS_INTERNAL_MATRIX_PREVIEW"
+  }
+}

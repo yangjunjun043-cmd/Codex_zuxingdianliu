@@ -1,0 +1,80 @@
+MODEL=AI6109_MOA_AutoComp9
+MODEL_PATH=D:\Codex\MOA_Arrester\MATLAB一键实验\AI6109_MOA_AutoComp9.slx
+MODEL_SHA256=56067ADAADF59B5921D7156A2ABB61777C4E98B69CB4150759C3CB1D4D6A2A70
+uB_SOURCE=AI6109_MOA_AutoComp9/Voltage Measurement1 port 1
+irB_TRUE_SOURCE=AI6109_MOA_AutoComp9/DynamicLeakageCurrentModel port 5
+irB_RAW_SOURCE=AI6109_MOA_AutoComp9/Current Measurement4 port 1
+CFG_Un_LL_V=110000
+CFG_Uph_V=63508.529610858837
+CFG_h3_ratio=0.050000000000000003
+CFG_phi3_deg=0
+CFG_Vneg_pu=0
+CFG_Vref_moa_V=63508.529610858837
+CFG_Iref_moa_A=0.00029999999999999997
+CFG_alpha_moa=6
+MAX_ABS_irB_TRUE_PLUS_irB_RAW_A=0
+FAULT_SCALE_MIN=1
+FAULT_SCALE_MAX=1
+
+VOLTAGE_SOURCE_MASK
+PositiveSequence=[Un_LL  120 f]
+VariationEntity=None
+VariationType=Table of time-amplitude pairs
+VariationTypeAlt=Step
+VariationStep=0.5
+VariationRate=10
+VariationMagnitude=0.3
+VariationFrequency=2
+VariationTiming=[1 2]
+VariationPhaseA=off
+Amplitudes=[1 0.8 1.2 1.0]
+TimeValues=[0 0.1 0.15 0.2]
+HarmonicGeneration=on
+HarmonicA=[3 h3_ratio phi3_deg 0]
+HarmonicB=[1 Vneg_pu 0 2]
+Timing=[0  StopTime]
+BusType=swing
+Pref=0
+Qref=0
+Qmin=-inf
+Qmax=inf
+
+STATEFLOW_CHARTS
+===AI6109_MOA_AutoComp9/DynamicLeakageCurrentModel===
+function [iA_total,iB_total,iC_total,iA_R_true,iB_R_true,iC_R_true] = dynamic_current(uA,uB, uC, iA_R_raw, iB_R_raw,iC_R_raw,Cs1_pF,Cs2_pF,B_fault_scale,noiseA,noiseB,noiseC, Ts_model, Cself_pF)
+%#codegen
+persistent a1 b1 c1 a2 b2 c2 count
+if isempty(count), a1=uA; b1=uB; c1=uC; a2=uA; b2=uB; c2=uC; count=uint8(0); end
+if count==0
+ duA=0; duB=0; duC=0; count=uint8(1);
+elseif count==1
+ duA=(uA-a1)/Ts_model; duB=(uB-b1)/Ts_model; duC=(uC-c1)/Ts_model; count=uint8(2);
+else
+ duA=(3*uA-4*a1+a2)/(2*Ts_model); duB=(3*uB-4*b1+b2)/(2*Ts_model); duC=(3*uC-4*c1+c2)/(2*Ts_model);
+end
+a2=a1; b2=b1; c2=c1; a1=uA; b1=uB; c1=uC;
+iA_R_true=-iA_R_raw; iB_R_true=-B_fault_scale*iB_R_raw; iC_R_true=-iC_R_raw;
+Cs1=Cs1_pF*1e-12; Cs2=Cs2_pF*1e-12; Cself=Cself_pF*1e-12;
+iA_total=Cself*duA+Cs1*(duA-duB)+iA_R_true+noiseA;
+iB_total=Cself*duB+Cs1*(duB-duA)+Cs2*(duB-duC)+iB_R_true+noiseB;
+iC_total=Cself*duC+Cs2*(duC-duB)+iC_R_true+noiseC;
+end
+
+===AI6109_MOA_AutoComp9/MATLAB Function===
+function i = moa_current(v, Vref_moa, Iref_moa, alpha_moa)
+% 氧化锌避雷器非线性阻性电流模型（参数来自统一 cfg）
+i = Iref_moa * sign(v) * (abs(v)/Vref_moa)^alpha_moa;
+end
+
+===AI6109_MOA_AutoComp9/MATLAB Function1===
+function i = moa_current(v, Vref_moa, Iref_moa, alpha_moa)
+% 氧化锌避雷器非线性阻性电流模型（参数来自统一 cfg）
+i = Iref_moa * sign(v) * (abs(v)/Vref_moa)^alpha_moa;
+end
+
+===AI6109_MOA_AutoComp9/MATLAB Function2===
+function i = moa_current(v, Vref_moa, Iref_moa, alpha_moa)
+% 氧化锌避雷器非线性阻性电流模型（参数来自统一 cfg）
+i = Iref_moa * sign(v) * (abs(v)/Vref_moa)^alpha_moa;
+end
+

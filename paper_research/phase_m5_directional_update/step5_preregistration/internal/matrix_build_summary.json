@@ -1,0 +1,20 @@
+{
+  "source_registry_sha256": "8A498E19A455C13CAA7B5371BE2F933CA7B7637B893C656C92DA84D88D1938BE",
+  "base_conditions": 50,
+  "physical_conditions": 150,
+  "algorithm_evaluations": 600,
+  "geometries": [
+    "ORTHOGONAL",
+    "MIXED",
+    "PARALLEL"
+  ],
+  "algorithms": [
+    "GH",
+    "GC",
+    "M5_DH",
+    "M5_FULL"
+  ],
+  "expected_sim_calls": 450,
+  "expected_tracker_branches": 1200,
+  "simulation_status": "NOT_RUN"
+}

@@ -1,0 +1,205 @@
+{
+  "schema_version": "1.1",
+  "project": {
+    "id": "M5_STEP5B",
+    "title": "M5 Step5B Robustness Monte-Carlo Decision Report",
+    "archetype": "empirical",
+    "study_designs": [
+      "paired computational Monte-Carlo robustness evaluation"
+    ],
+    "lifecycle_stage": "final",
+    "review_maturity": "internal",
+    "target_venue": "",
+    "active_release": "working"
+  },
+  "artifacts": [
+    {
+      "id": "main",
+      "path": "M5_STEP5_DECISION_REPORT.md",
+      "role": "decision_report",
+      "status": "ACTIVE",
+      "required_for_release": true
+    },
+    {
+      "id": "master-results",
+      "path": "M5_STEP5_MASTER_RESULTS.csv",
+      "role": "primary_results_table",
+      "status": "ACTIVE",
+      "required_for_release": true
+    }
+  ],
+  "authority_sources": [
+    {
+      "id": "analysis-output",
+      "kind": "verified_primary_evidence",
+      "path_or_reference": "M5_STEP5_MASTER_RESULTS.csv",
+      "scope": [
+        "methods",
+        "results",
+        "numbers"
+      ],
+      "status": "VERIFIED",
+      "last_verified": "2026-10-01"
+    },
+    {
+      "id": "step5-preregistration",
+      "kind": "frozen_preregistration",
+      "path_or_reference": "../step5_preregistration/M5_STEP5_PREREGISTRATION.md",
+      "scope": [
+        "methods",
+        "gates",
+        "interpretation boundaries"
+      ],
+      "status": "VERIFIED",
+      "last_verified": "2026-10-01"
+    }
+  ],
+  "contract": {
+    "gap": "Step4 direction-selective findings required a frozen nuisance-robustness decision test.",
+    "task": "Execute the frozen Step5A registry without tuning and report all paired outcomes and gates.",
+    "outcomes": [
+      "M5_STEP5_DECISION_REPORT.md",
+      "M5_STEP5_MASTER_RESULTS.csv"
+    ],
+    "questions": [
+      {
+        "id": "Q1",
+        "text": "Does M5_FULL robustly reduce orthogonal RMSE_perp relative to GC across the frozen 50-row nuisance registry?",
+        "lock": "SEMANTIC"
+      }
+    ],
+    "contribution": "A fully retained matched robustness evaluation that rejects the preregistered primary orthogonal robustness criterion.",
+    "nonclaims": [
+      "Step5 does not authorize Step6.",
+      "Parallel geometry is an identifiability boundary, not a superiority target.",
+      "No p-value is interpreted as a population-sampling result.",
+      "Mixed PASS does not offset the failed orthogonal primary gate."
+    ]
+  },
+  "semantic_locks": [
+    {
+      "id": "LOCK_PRIMARY_RESULT",
+      "kind": "SEMANTIC",
+      "canonical": "Orthogonal continuous Gate A failed: median Delta_perp_cont is positive and fraction below zero is 0.34."
+    },
+    {
+      "id": "LOCK_DECISION",
+      "kind": "SEMANTIC",
+      "canonical": "STEP5 = STOP and STEP6 is not authorized pending human review."
+    },
+    {
+      "id": "LOCK_METHOD",
+      "kind": "SEMANTIC",
+      "canonical": "Algorithms, parameters, registry, seeds, geometries, endpoints, and gates were not changed after performance was viewed."
+    }
+  ],
+  "terminology": [
+    {
+      "id": "TERM_DELTA_CONT",
+      "preferred": "Delta_perp_cont"
+    },
+    {
+      "id": "TERM_DELTA_HARD",
+      "preferred": "Delta_perp_hard"
+    },
+    {
+      "id": "TERM_BOUNDARY",
+      "preferred": "identifiability boundary"
+    }
+  ],
+  "style_profile": {
+    "language_variant": "zh-CN with preserved mathematical identifiers",
+    "protected_terms": [],
+    "discouraged_phrases": [],
+    "preferred_open_compounds": [],
+    "allowed_repetitions": [
+      "Step5",
+      "Delta_perp_cont",
+      "Delta_perp_hard"
+    ],
+    "sentence_opening_words": 4,
+    "phrase_words": 5,
+    "phrase_min_occurrences": 3
+  },
+  "facts": [
+    {
+      "id": "FACT_COUNTS",
+      "value": "150 physical conditions; 600 algorithm evaluations; no missing metrics; no simulation aborts",
+      "source_id": "analysis-output",
+      "expected_strings": [
+        "PHYSICAL: 150 / 150",
+        "ALGORITHM_EVALUATIONS: 600 / 600",
+        "metric missing：0",
+        "simulation abort：0"
+      ],
+      "scope_roles": [
+        "decision_report"
+      ]
+    },
+    {
+      "id": "FACT_PRIMARY",
+      "value": "median Delta_perp_cont = 0.00472447528 pF; fraction Delta_perp_cont < 0 = 0.34",
+      "source_id": "analysis-output",
+      "expected_strings": [
+        "median Delta_perp_cont = 0.00472447528 pF",
+        "改善比例 `34.0%`"
+      ],
+      "scope_roles": [
+        "decision_report"
+      ]
+    },
+    {
+      "id": "FACT_DECISION",
+      "value": "Gate A failed; STEP5 = STOP",
+      "source_id": "analysis-output",
+      "expected_strings": [
+        "Gate A = **FAIL**",
+        "`STEP5 = STOP`"
+      ],
+      "scope_roles": [
+        "decision_report"
+      ]
+    }
+  ],
+  "alignment": [
+    {
+      "question_id": "Q1",
+      "method": "Replicate each of 50 frozen nuisance rows across three geometries and evaluate GH, GC, M5_DH, and M5_FULL with matched data.",
+      "evidence": "Fifty finite orthogonal continuous paired deltas in the master results table.",
+      "result": "Median Delta_perp_cont was 0.00472447528 pF and 34% of pairs were below zero.",
+      "interpretation": "The preregistered orthogonal continuous robustness hypothesis failed.",
+      "limitation": "The registry is a designed cohort and is not treated as a natural population sample.",
+      "contribution": "The negative robustness result is retained without post-result tuning.",
+      "status": "ACCEPTED"
+    }
+  ],
+  "dimensions": [],
+  "decisions": [],
+  "issues": [],
+  "release": {
+    "status": "REVIEW_READY_DECISION",
+    "candidate_artifact_ids": [
+      "main",
+      "master-results"
+    ],
+    "required_checks": [
+      "argument_structure",
+      "evidence_scope",
+      "scholarly_writing",
+      "delivery_integrity",
+      "functional_completeness"
+    ],
+    "completed_checks": [
+      "argument_structure",
+      "evidence_scope",
+      "scholarly_writing",
+      "delivery_integrity",
+      "functional_completeness"
+    ],
+    "checked_hashes": {
+      "M5_STEP5_DECISION_REPORT.md": "95A5C0249B7ADEF00FC3A8A54E3C773A6D17613DBD676D9A88DC7C17CDD3AEC9",
+      "M5_STEP5_MASTER_RESULTS.csv": "842B0A65B0AA4544B80DB775BA5FA712626CA07C7AFA8378BB5BC7FBB76ABC6B"
+    },
+    "visual_check": "PASS_INTERNAL_CSV_AUDIT_PREVIEW"
+  }
+}

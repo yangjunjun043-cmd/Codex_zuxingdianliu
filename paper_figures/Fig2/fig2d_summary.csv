@@ -1,0 +1,3 @@
+case_id,case_name,true_fault_factor,vff_rls_estimated_fault_factor,counterfactual_parameter_fault_factor
+Case05,Case05_fault_only,1.59999999999967,1.40107479735928,1.60105115428053
+Case06,Case06_drift_then_fault,1.59999999999967,1.40226869710244,1.60264742837203

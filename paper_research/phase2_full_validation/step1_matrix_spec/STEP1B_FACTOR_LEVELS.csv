@@ -1,0 +1,64 @@
+factor_id,factor_name,family,level_id,level_value,unit,anchor_condition,only_changed,held_fixed,reuse_status,execution_gate,notes
+FA_CTRL,fault_factor,healthy_control,CTRL,1.0,ratio,healthy/no-fault control,fault_factor,all other condition fields,CONTROL_NOT_FAULT_LEVEL,NONE,Control only and excluded from fault-level count
+FA_A1_01,fault_factor,fault_only,A1_01,1.05,ratio,Case05,fault_factor,"timing;ramp;reference;harmonic;negative_sequence;Cself;noise_definition",PARTIAL_REUSE_RANGE,NONE,Unified four-algorithm comparison requires Step1C registry
+FA_A1_02,fault_factor,fault_only,A1_02,1.10,ratio,Case05,fault_factor,"timing;ramp;reference;harmonic;negative_sequence;Cself;noise_definition",PARTIAL_REUSE_RANGE,NONE,Unified four-algorithm comparison requires Step1C registry
+FA_A1_03,fault_factor,fault_only,A1_03,1.20,ratio,Case05,fault_factor,"timing;ramp;reference;harmonic;negative_sequence;Cself;noise_definition",PARTIAL_REUSE_RANGE,NONE,Unified four-algorithm comparison requires Step1C registry
+FA_A1_04,fault_factor,fault_only,A1_04,1.30,ratio,Case05,fault_factor,"timing;ramp;reference;harmonic;negative_sequence;Cself;noise_definition",PARTIAL_REUSE_RANGE,NONE,Unified four-algorithm comparison requires Step1C registry
+FA_A1_05,fault_factor,fault_only,A1_05,1.40,ratio,Case05,fault_factor,"timing;ramp;reference;harmonic;negative_sequence;Cself;noise_definition",PARTIAL_REUSE_RANGE,NONE,Unified four-algorithm comparison requires Step1C registry
+FA_A1_06,fault_factor,fault_only,A1_06,1.60,ratio,Case05,fault_factor,"timing;ramp;reference;harmonic;negative_sequence;Cself;noise_definition",EXACT_ANCHOR_AT_CASE05,NONE,Nominal duplicate is Case05
+FA_A2_01,fault_factor,drift_then_fault,A2_01,1.05,ratio,Case06,fault_factor,"timing;ramp;reference;harmonic;negative_sequence;Cself;noise_definition;drift",NEW_PHASE2_CONDITION,NONE,Keep Case06 drift frozen
+FA_A2_02,fault_factor,drift_then_fault,A2_02,1.10,ratio,Case06,fault_factor,"timing;ramp;reference;harmonic;negative_sequence;Cself;noise_definition;drift",NEW_PHASE2_CONDITION,NONE,Keep Case06 drift frozen
+FA_A2_03,fault_factor,drift_then_fault,A2_03,1.20,ratio,Case06,fault_factor,"timing;ramp;reference;harmonic;negative_sequence;Cself;noise_definition;drift",NEW_PHASE2_CONDITION,NONE,Keep Case06 drift frozen
+FA_A2_04,fault_factor,drift_then_fault,A2_04,1.30,ratio,Case06,fault_factor,"timing;ramp;reference;harmonic;negative_sequence;Cself;noise_definition;drift",NEW_PHASE2_CONDITION,NONE,Keep Case06 drift frozen
+FA_A2_05,fault_factor,drift_then_fault,A2_05,1.40,ratio,Case06,fault_factor,"timing;ramp;reference;harmonic;negative_sequence;Cself;noise_definition;drift",NEW_PHASE2_CONDITION,NONE,Keep Case06 drift frozen
+FA_A2_06,fault_factor,drift_then_fault,A2_06,1.60,ratio,Case06,fault_factor,"timing;ramp;reference;harmonic;negative_sequence;Cself;noise_definition;drift",EXACT_ANCHOR_AT_CASE06,NONE,Nominal duplicate is Case06
+SNR_01,SNR_dB,slow_drift,SNR_INF,Inf,dB,Case02,measurement_noise,"truth;reference;fault;harmonic;negative_sequence;Cself",NEW_PHASE2_CONDITION,NONE,Noise-free; fixed preregistered deterministic seed metadata still retained
+SNR_02,SNR_dB,slow_drift,SNR_40,40,dB,Case02,measurement_noise,"truth;reference;fault;harmonic;negative_sequence;Cself",PARTIAL_REUSE_RANGE,NONE,All algorithms share one realization
+SNR_03,SNR_dB,slow_drift,SNR_30,30,dB,Case02,measurement_noise,"truth;reference;fault;harmonic;negative_sequence;Cself",EXACT_ANCHOR_AT_CASE02,NONE,Nominal duplicate is Case02
+SNR_04,SNR_dB,slow_drift,SNR_20,20,dB,Case02,measurement_noise,"truth;reference;fault;harmonic;negative_sequence;Cself",PARTIAL_REUSE_RANGE,NONE,All algorithms share one realization
+REF_01,reference_phase_error,phase_error_fault,REF_0,0,deg,Case05,reconstructed_reference_phase,"physical_data;noise;fault;harmonic_amplitude;Cself",EXACT_ANCHOR_AT_CASE05,NONE,Positive convention; zero is nominal
+REF_02,reference_phase_error,phase_error_fault,REF_033,0.33,deg,Case05,reconstructed_reference_phase,"physical_data;noise;fault;harmonic_amplitude;Cself",PARTIAL_REUSE,NONE,phi1 plus delta and phi3 plus 3delta
+REF_03,reference_phase_error,phase_error_fault,REF_05,0.5,deg,Case05,reconstructed_reference_phase,"physical_data;noise;fault;harmonic_amplitude;Cself",PARTIAL_REUSE,NONE,phi1 plus delta and phi3 plus 3delta
+REF_04,reference_phase_error,phase_error_fault,REF_1,1,deg,Case05,reconstructed_reference_phase,"physical_data;noise;fault;harmonic_amplitude;Cself",PARTIAL_REUSE,NONE,phi1 plus delta and phi3 plus 3delta
+REF_05,reference_phase_error,phase_error_fault,REF_2,2,deg,Case05,reconstructed_reference_phase,"physical_data;noise;fault;harmonic_amplitude;Cself",PARTIAL_REUSE,NONE,phi1 plus delta and phi3 plus 3delta
+REF_06,reference_phase_error,phase_error_fault,REF_3,3,deg,Case05,reconstructed_reference_phase,"physical_data;noise;fault;harmonic_amplitude;Cself",PARTIAL_REUSE,NONE,Positive lead only; signed symmetry excluded
+H3_01,h3_ratio,slow_drift,H3_005,0.005,pu,Case02,third_harmonic_amplitude,"phi3_deg=0;all other Case02 fields",PARTIAL_REUSE_RANGE,NONE,Amplitude only
+H3_02,h3_ratio,slow_drift,H3_020,0.02,pu,Case02,third_harmonic_amplitude,"phi3_deg=0;all other Case02 fields",PARTIAL_REUSE_RANGE,NONE,Amplitude only
+H3_03,h3_ratio,slow_drift,H3_050,0.05,pu,Case02,third_harmonic_amplitude,"phi3_deg=0;all other Case02 fields",EXACT_ANCHOR_AT_CASE02,NONE,Nominal duplicate is Case02
+H3_04,h3_ratio,slow_drift,H3_080,0.08,pu,Case02,third_harmonic_amplitude,"phi3_deg=0;all other Case02 fields",PARTIAL_REUSE_RANGE,NONE,Amplitude only
+H3_05,h3_ratio,slow_drift,H3_100,0.10,pu,Case02,third_harmonic_amplitude,"phi3_deg=0;all other Case02 fields",PARTIAL_REUSE_RANGE,NONE,Amplitude only
+NEG_01,Vneg_pu,validity_boundary,NEG_0,0,pu,Case02,negative_sequence_ratio,all other Case02 fields,EXACT_ANCHOR_AT_CASE02,NONE,Internal phase convention unresolved
+NEG_02,Vneg_pu,validity_boundary,NEG_1,0.01,pu,Case02,negative_sequence_ratio,all other Case02 fields,PARTIAL_REUSE_RANGE,NONE,Configured boundary test only
+NEG_03,Vneg_pu,validity_boundary,NEG_3,0.03,pu,Case02,negative_sequence_ratio,all other Case02 fields,PARTIAL_REUSE_RANGE,NONE,Configured boundary test only
+NEG_04,Vneg_pu,validity_boundary,NEG_5,0.05,pu,Case02,negative_sequence_ratio,all other Case02 fields,PARTIAL_REUSE_RANGE,NONE,Configured boundary test only
+CSELF_01,Cself_mismatch_pct,common_mode_model_mismatch,CSELF_M10,-10,pct,Case02,Cself_truth_pF,"Cself_algorithm_pF=400;all other Case02 fields",NEW_PHASE2_CONDITION,NONE,Cself truth 360 pF
+CSELF_02,Cself_mismatch_pct,common_mode_model_mismatch,CSELF_M5,-5,pct,Case02,Cself_truth_pF,"Cself_algorithm_pF=400;all other Case02 fields",NEW_PHASE2_CONDITION,NONE,Cself truth 380 pF
+CSELF_03,Cself_mismatch_pct,common_mode_model_mismatch,CSELF_M2,-2,pct,Case02,Cself_truth_pF,"Cself_algorithm_pF=400;all other Case02 fields",NEW_PHASE2_CONDITION,NONE,Cself truth 392 pF
+CSELF_04,Cself_mismatch_pct,common_mode_model_mismatch,CSELF_0,0,pct,Case02,Cself_truth_pF,"Cself_algorithm_pF=400;all other Case02 fields",EXACT_ANCHOR_AT_CASE02,NONE,Cself truth 400 pF
+CSELF_05,Cself_mismatch_pct,common_mode_model_mismatch,CSELF_P2,2,pct,Case02,Cself_truth_pF,"Cself_algorithm_pF=400;all other Case02 fields",NEW_PHASE2_CONDITION,NONE,Cself truth 408 pF
+CSELF_06,Cself_mismatch_pct,common_mode_model_mismatch,CSELF_P5,5,pct,Case02,Cself_truth_pF,"Cself_algorithm_pF=400;all other Case02 fields",NEW_PHASE2_CONDITION,NONE,Cself truth 420 pF
+CSELF_07,Cself_mismatch_pct,common_mode_model_mismatch,CSELF_P10,10,pct,Case02,Cself_truth_pF,"Cself_algorithm_pF=400;all other Case02 fields",NEW_PHASE2_CONDITION,NONE,Cself truth 440 pF
+CSAC_01,CsAC_pF,unmodelled_coupling,CSAC_0,0,pF,Case02,external_AC_current,"estimator_AB_BC_only;all other Case02 fields",NOMINAL_EQUIVALENCE_CANDIDATE,ZERO_INJECTION_REGRESSION,Must reproduce frozen nominal data
+CSAC_02,CsAC_pF,unmodelled_coupling,CSAC_05,0.5,pF,Case02,external_AC_current,"estimator_AB_BC_only;all other Case02 fields",NEW_PHASE2_CONDITION,ZERO_INJECTION_REGRESSION,Inject before formal noise
+CSAC_03,CsAC_pF,unmodelled_coupling,CSAC_1,1,pF,Case02,external_AC_current,"estimator_AB_BC_only;all other Case02 fields",NEW_PHASE2_CONDITION,ZERO_INJECTION_REGRESSION,Inject before formal noise
+CSAC_04,CsAC_pF,unmodelled_coupling,CSAC_2,2,pF,Case02,external_AC_current,"estimator_AB_BC_only;all other Case02 fields",NEW_PHASE2_CONDITION,ZERO_INJECTION_REGRESSION,Inject before formal noise
+CSAC_05,CsAC_pF,unmodelled_coupling,CSAC_3,3,pF,Case02,external_AC_current,"estimator_AB_BC_only;all other Case02 fields",NEW_PHASE2_CONDITION,ZERO_INJECTION_REGRESSION,Inject before formal noise
+RATE_01,drift_rate_multiplier,overlap,RATE_05,0.5,x,Case07/08,cubic_smoothstep_duration,"total_vector=[+3 -2]pF;fault_ramp;all non-rate fields",NEW_PHASE2_CONDITION,RATE_TIMING_DESIGN,Duration 2.80 s
+RATE_02,drift_rate_multiplier,overlap,RATE_1,1.0,x,Case07/08,cubic_smoothstep_duration,"total_vector=[+3 -2]pF;fault_ramp;all non-rate fields",EXACT_ANCHOR_RATE,NONE,Duration 1.40 s
+RATE_03,drift_rate_multiplier,overlap,RATE_2,2.0,x,Case07/08,cubic_smoothstep_duration,"total_vector=[+3 -2]pF;fault_ramp;all non-rate fields",NEW_PHASE2_CONDITION,RATE_TIMING_DESIGN,Duration 0.70 s
+OVF_01,overlap_fault_factor,overlap_core,OVF_110,1.10,ratio,Case07/08,fault_factor,"drift_direction;rate-specific duration;fault timing/ramp",NEW_PHASE2_CONDITION,RATE_TIMING_DESIGN,Core factor
+OVF_02,overlap_fault_factor,overlap_core,OVF_130,1.30,ratio,Case07,fault_factor,"drift_direction;rate-specific duration;fault timing/ramp",EXACT_ANCHOR_AT_RATE1,NONE,Case07 duplicate at rate 1x D1
+OVF_03,overlap_fault_factor,overlap_core,OVF_160,1.60,ratio,Case08,fault_factor,"drift_direction;rate-specific duration;fault timing/ramp",EXACT_ANCHOR_AT_RATE1,NONE,Case08 duplicate at rate 1x D1
+DIR_01,drift_direction,overlap_direction_extension,D1,"[+3;-2]",pF,Case07/08,drift_vector,"L2=sqrt(13)pF;rate=1x;fault_factor in {1.30 1.60}",EXACT_ANCHOR_AND_CORE_DUPLICATE,NONE,Nominal direction
+DIR_02,drift_direction,overlap_direction_extension,D2,"[-3;+2]",pF,Case07/08,drift_vector,"L2=sqrt(13)pF;rate=1x;fault_factor in {1.30 1.60}",NEW_PHASE2_CONDITION,NONE,Must not be deleted based on outcome
+DIR_03,drift_direction,overlap_direction_extension,D3,"[+3;+2]",pF,Case07/08,drift_vector,"L2=sqrt(13)pF;rate=1x;fault_factor in {1.30 1.60}",NEW_PHASE2_CONDITION,NONE,Must not be deleted based on outcome
+SENS_GR_01,gate_ratio,offline_sensitivity,LOW,1.008,ratio,Case08,gate_ratio,all other frozen parameters,OFFLINE_VARIANT_ONLY,REPLAY_OR_TRACKER_EQUIVALENCE,0.9 times frozen; M3/M4 only
+SENS_GR_02,gate_ratio,offline_sensitivity,NOMINAL,1.12,ratio,Case08,none,all frozen parameters,FROZEN_METHOD,NONE,Not an incremental condition
+SENS_GR_03,gate_ratio,offline_sensitivity,HIGH,1.232,ratio,Case08,gate_ratio,all other frozen parameters,OFFLINE_VARIANT_ONLY,REPLAY_OR_TRACKER_EQUIVALENCE,1.1 times frozen; M3/M4 only
+SENS_GQ_01,gate_quad_ratio,offline_sensitivity,LOW,1.08,ratio,Case08,gate_quad_ratio,all other frozen parameters,OFFLINE_VARIANT_ONLY,REPLAY_OR_TRACKER_EQUIVALENCE,0.9 times frozen; M3/M4 only
+SENS_GQ_02,gate_quad_ratio,offline_sensitivity,NOMINAL,1.20,ratio,Case08,none,all frozen parameters,FROZEN_METHOD,NONE,Not an incremental condition
+SENS_GQ_03,gate_quad_ratio,offline_sensitivity,HIGH,1.32,ratio,Case08,gate_quad_ratio,all other frozen parameters,OFFLINE_VARIANT_ONLY,REPLAY_OR_TRACKER_EQUIVALENCE,1.1 times frozen; M3/M4 only
+SENS_HOLD_01,gate_hold_cycles,offline_sensitivity,LOW,24,cycle,Case08,gate_hold_cycles,all other frozen parameters,OFFLINE_VARIANT_ONLY,TRACKER_EQUIVALENCE,M3 only
+SENS_HOLD_02,gate_hold_cycles,offline_sensitivity,NOMINAL,25,cycle,Case08,none,all frozen parameters,FROZEN_METHOD,NONE,M3 only; M4 has no hold cycles
+SENS_HOLD_03,gate_hold_cycles,offline_sensitivity,HIGH,26,cycle,Case08,gate_hold_cycles,all other frozen parameters,OFFLINE_VARIANT_ONLY,TRACKER_EQUIVALENCE,M3 only
+

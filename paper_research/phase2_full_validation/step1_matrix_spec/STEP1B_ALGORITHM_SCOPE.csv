@@ -1,0 +1,5 @@
+algorithm_id,formal_name,frozen_version,deterministic_main_matrix,monte_carlo,counterfactual_role,case01_06_historical,case07_08_historical,sensitivity_gate_ratio,sensitivity_gate_quad_ratio,sensitivity_hold_cycles,allowed_change,forbidden_claim
+M0,Fixed coupling compensation,Phase1A frozen implementation,YES,YES,NOT_APPLICABLE,AVAILABLE,NOT_AVAILABLE_MISSING_FOR_PHASE2_MATRIX,NOT_APPLICABLE,NOT_APPLICABLE,NOT_APPLICABLE,NONE,Do not claim Case07/08 historical four-algorithm completeness
+M2,VFF-RLS without gate,Phase1A/1B frozen implementation,YES,YES,MECHANISM_REFERENCE_ONLY,AVAILABLE,AVAILABLE,NOT_APPLICABLE,NOT_APPLICABLE,NOT_APPLICABLE,NONE,Do not describe as protection-schedule replay target
+M3,VFF-RLS plus hard gate,Phase1C inherited frozen implementation,YES,YES,PRIMARY_F_N_P_A,AVAILABLE,AVAILABLE,OFFLINE_ONLY,OFFLINE_ONLY,OFFLINE_ONLY,NONE,Do not replace frozen method with sensitivity variant
+M4,REW-AI,paper_method_v1,YES,YES,PRIMARY_F_N_P_A,AVAILABLE,AVAILABLE,OFFLINE_ONLY,OFFLINE_ONLY,NOT_APPLICABLE_NO_HOLD,NONE,Do not tune or alter formula parameters VFF rate limit projection or evidence mapping

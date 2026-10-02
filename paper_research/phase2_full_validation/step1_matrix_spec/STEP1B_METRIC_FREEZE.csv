@@ -1,0 +1,38 @@
+metric_family,metric_name,priority,formal_definition,unit,window_rule,algorithm_scope,interpretation_limit,status
+healthy_drift,Cs1_RMSE_pF,PRIMARY,sqrt(mean((Cs1_est-Cs1_true)^2)) over declared samples,pF,Declared family window shared by all algorithms,M0/M2/M3/M4,None,FROZEN_REUSE
+healthy_drift,Cs2_RMSE_pF,PRIMARY,sqrt(mean((Cs2_est-Cs2_true)^2)) over declared samples,pF,Declared family window shared by all algorithms,M0/M2/M3/M4,None,FROZEN_REUSE
+healthy_drift,B_resistive_fundamental_error_pct,SECONDARY,Existing frozen B-phase resistive fundamental amplitude error definition,pct,Declared family window shared by all algorithms,M0/M2/M3/M4,Not a replacement for Cs RMSE,FROZEN_REUSE
+healthy_drift,Cs1_max_abs_error_pF,SECONDARY,max(abs(Cs1_est-Cs1_true)) over declared samples,pF,Declared family window shared by all algorithms,M0/M2/M3/M4,Sensitive to window endpoints,FROZEN_REUSE
+healthy_drift,Cs2_max_abs_error_pF,SECONDARY,max(abs(Cs2_est-Cs2_true)) over declared samples,pF,Declared family window shared by all algorithms,M0/M2/M3/M4,Sensitive to window endpoints,FROZEN_REUSE
+healthy_drift,unnecessary_suppression_ratio,COST,Existing Phase1C M4 suppression cost metric,ratio,Healthy/drift declared window,M4 only,Cost diagnostic not a primary accuracy score,FROZEN_REUSE
+persistent_fault,fault_factor_true,PRIMARY,True post/pre B-resistive-current factor,ratio,Frozen pre and post windows,M0/M2/M3/M4,Truth field not an estimator score,FROZEN_REUSE
+persistent_fault,fault_factor_est,PRIMARY,Estimated post/pre B-resistive-current factor,ratio,Frozen pre and post windows,M0/M2/M3/M4,Must use same windows as truth,FROZEN_REUSE
+persistent_fault,fault_retention_error_pct,PRIMARY,Existing frozen relative error between estimated and true fault increment,pct,Frozen pre and post windows,M0/M2/M3/M4,Signed convention must retain provenance,FROZEN_REUSE
+persistent_fault,DeltaCs1_fault_induced_pF,PRIMARY,Counterfactual or frozen formal signed fault-induced Cs1 change,pF,Declared fault comparison interval,M0/M2/M3/M4,Keep signed value,FROZEN_REUSE
+persistent_fault,DeltaCs2_fault_induced_pF,PRIMARY,Counterfactual or frozen formal signed fault-induced Cs2 change,pF,Declared fault comparison interval,M0/M2/M3/M4,Keep signed value,FROZEN_REUSE
+persistent_fault,Cs_fault_induced_bias_norm_pF,PRIMARY_DERIVED,sqrt(DeltaCs1_fault_induced_pF^2+DeltaCs2_fault_induced_pF^2),pF,Same interval as signed components,M0/M2/M3/M4,Contamination magnitude only and not purity,NEW_DERIVED_FROZEN
+persistent_fault,first_gate_trigger_s,SECONDARY,First formal hard-gate trigger time,s,Fault interval,M3 only,Not a detector-performance primary metric,FROZEN_REUSE
+persistent_fault,hard_gate_latency_s,SECONDARY,First trigger time minus fault onset,s,Fault interval,M3 only,Undefined or N/A when no trigger,FROZEN_REUSE
+persistent_fault,hard_gate_active_ratio,SECONDARY,Fraction of declared samples/cycles with hard gate active,ratio,Declared fault window,M3 only,Window metadata mandatory,FROZEN_REUSE
+persistent_fault,mean_update_weight,SECONDARY,Mean M4 update weight g over declared window,ratio,Declared fault window,M4 only,Not a final bias metric,FROZEN_REUSE
+persistent_fault,material_suppression_onset_s,SECONDARY,Existing frozen onset of material M4 suppression,s,Fault interval,M4 only,Depends on frozen material-suppression definition,FROZEN_REUSE
+persistent_fault,information_suppression_ratio_J,SECONDARY,Existing frozen information-state suppression ratio J,ratio,Declared fault window,M4 only,Not equivalent to final bias reduction,FROZEN_REUSE
+persistent_fault,information_suppression_ratio_h,SECONDARY,Existing frozen baseline-state suppression ratio h,ratio,Declared fault window,M4 only,Not equivalent to final bias reduction,FROZEN_REUSE
+temporary_overlap,overlap_Cs1_RMSE_pF,PRIMARY,sqrt(mean((Cs1_est-Cs1_true)^2)) over declared overlap window,pF,W1 and W2 separately or explicitly combined,M0/M2/M3/M4,Window label mandatory,FROZEN_REUSE
+temporary_overlap,overlap_Cs2_RMSE_pF,PRIMARY,sqrt(mean((Cs2_est-Cs2_true)^2)) over declared overlap window,pF,W1 and W2 separately or explicitly combined,M0/M2/M3/M4,Window label mandatory,FROZEN_REUSE
+temporary_overlap,fault_increment_retention_ratio,PRIMARY,Existing frozen estimated-to-true fault-increment retention ratio,ratio,W1 and W2 separately or explicitly combined,M0/M2/M3/M4,Must not merge W1/W2 without combined label,FROZEN_REUSE
+temporary_overlap,true_drift_vector,MANDATORY_RECORD,"Signed Cs1 component;signed Cs2 component;L2 norm",pF,Declared movement interval,condition truth,All three fields mandatory,NEW_SCHEMA_FROZEN
+temporary_overlap,F_movement_vector,MANDATORY_RECORD,"Signed Cs1 component;signed Cs2 component;L2 norm",pF,Same movement interval per algorithm,M0/M2/M3/M4,Do not retain norm only,NEW_SCHEMA_FROZEN
+temporary_overlap,CF_movement_vector,MANDATORY_RECORD,"Signed Cs1 component;signed Cs2 component;L2 norm",pF,Same movement interval per algorithm,M0/M2/M3/M4,Do not retain norm only,NEW_SCHEMA_FROZEN
+temporary_overlap,F_minus_CF_vector,MANDATORY_RECORD,"F movement minus CF movement; signed Cs1;signed Cs2;L2 norm",pF,Same movement interval per algorithm,M0/M2/M3/M4,Exposes wrong-direction movement; causal confounding remains unless replay used,NEW_SCHEMA_FROZEN
+temporary_overlap,parameter_error_RMS_norm_pF,SECONDARY,Existing frozen RMS norm of parameter error,pF,Declared overlap/recovery window,M0/M2/M3/M4,Window metadata mandatory,FROZEN_REUSE
+temporary_overlap,mean_memory_norm_pF,SECONDARY,Existing frozen mean post-fault memory norm,pF,Declared post-fault window,M0/M2/M3/M4,Not a purity score,FROZEN_REUSE
+temporary_overlap,endpoint_memory_norm_pF,SECONDARY,Existing frozen endpoint memory norm,pF,Declared endpoint,M0/M2/M3/M4,Endpoint metadata mandatory,FROZEN_REUSE
+temporary_overlap,post_fault_AUC_pF_s,SECONDARY,Existing frozen post-fault parameter-error area,pF*s,Declared post-fault recovery window,M0/M2/M3/M4,Window metadata mandatory,FROZEN_REUSE
+temporary_overlap,hard_gate_active_ratio,SECONDARY,Fraction of declared samples/cycles with M3 hard gate active,ratio,W1/W2 and relevant recovery windows,M3 only,Not a detector-rate primary metric,FROZEN_REUSE
+temporary_overlap,hard_gate_latency_s,SECONDARY,First M3 gate trigger minus fault onset,s,Fault/overlap interval,M3 only,N/A when no trigger,FROZEN_REUSE
+temporary_overlap,mean_update_weight,SECONDARY,Mean M4 update weight g,ratio,W1/W2 separately or explicitly combined,M4 only,Window label mandatory,FROZEN_REUSE
+prohibited,drift_adaptation_purity,PROHIBITED_PRIMARY,Historical ratio norm(Delta c_CF)/norm(Delta c_F),ratio,Historical provenance only,all,Not purity fraction;not performance score;not a main conclusion,PROVENANCE_ONLY
+execution,NUMERICAL_FAILURE,EXECUTION,Simulation abort or missing required output or NaN or Inf or validator failure or corrupt result,count,Per registered execution,M0/M2/M3/M4,No performance-error threshold allowed,FROZEN_NEW_DEFINITION
+execution,numerical_execution_failure_count,EXECUTION,Count of NUMERICAL_FAILURE events,count,Per family and algorithm,M0/M2/M3/M4,Not a performance failure rate,FROZEN_NEW_DEFINITION
+
